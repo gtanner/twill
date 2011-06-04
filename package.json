@@ -1,0 +1,17 @@
+{
+  "name": "twill",
+  "version": "0.0.1",
+  "description": "a clean javascript aspect oriented microframework",
+  "homepage": "http://github.com/gtanner/twill",
+  "author": "gtanner",
+  "contributors": [{
+    "name": "Gord Tanner",
+    "email": "gtanner@gmail.com",
+    "url": "http://github.com/gtanner"
+  }],
+  "licenses": [{
+    "type": "MIT",
+    "url": "http://www.opensource.org/licenses/mit-license.php"
+  }],
+  "main": "./lib/twill"
+}

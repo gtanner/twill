@@ -1,13 +1,13 @@
-=twill
+# twill
 A new approch to javascript aspect oriented programming.  Twill is an attempt to create
 an AOP framework for javascript that feels like it was written for javascript. Twill
 will run fine in both node and in the browser.
 
-=install
+# install
 
     npm install twill
 
-=example
+# example
 
     var twill = require("twill"),
         foo = {
@@ -91,14 +91,15 @@ will run fine in both node and in the browser.
     foo.dude();
     //method not defined
 
-=todo:
+# todo:
 
 This is a very early release and not everything is done just yet. 
 Still todo:
 - advice.all methods are not implemented
 - unweaving is not supported yet.
+- make it work in the browser
 
-=how to develop
+# how to develop
 
 all code should have tests written in node-unit. Run the tests with:
 

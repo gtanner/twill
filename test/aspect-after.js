@@ -57,5 +57,23 @@ exports["when aspecting after a method"] = {
         });
 
         target.merp();
+    },
+
+    "it still returns the value of the original method" : function (test) {
+        var target = {
+            doubleRainbow: function () {
+                return "OMG OMG OMG OMG OMG";
+            }
+        };
+
+        twill.aspect(target, function (weave) {
+            weave.after.doubleRainbow(function () {
+                return "meh";
+            });
+        });
+
+        test.equal("OMG OMG OMG OMG OMG", target.doubleRainbow());
+        test.done();
+
     }
 };

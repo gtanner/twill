@@ -79,7 +79,6 @@ exports["when calling the aspect function"] = {
             test.ok(typeof weave.all.before === 'function', "before should be a function");
             test.ok(typeof weave.all.after === 'function', "after should be a function");
             test.ok(typeof weave.all.around === 'function', "around should be a function");
-            test.ok(typeof weave.all.create === 'function', "create should be a function");
             test.done();
         });
     }
@@ -115,5 +114,38 @@ exports["methods are exposed on"] = {
             test.ok(weave.around.c === undefined, "expected c to not exist");
             test.done();
         });
+    }
+};
+
+
+exports["when aspecting"] = {
+    "it can declare and use multiple aspects" : function (test) {
+        var foo = {
+                bar: function () {},
+                baz: function () {},
+                fred: function () {}
+            },
+            result = "";
+
+        twill.aspect(foo, function (weave) {
+            weave.before.bar(function () {
+                result += "a";
+            });
+
+            weave.after.baz(function () {
+                result += "b";
+            });
+
+            weave.around.fred(function () {
+                result += "c";
+            });
+        });
+
+        foo.bar();
+        foo.baz();
+        foo.fred();
+
+        test.equal("abc", result);
+        test.done();
     }
 };

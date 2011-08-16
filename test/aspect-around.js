@@ -49,6 +49,23 @@ exports["when aspecting around a method"] = {
         });
 
         target.tangent();
+    },
+
+    "it returns the value from the aspect rather than the original" : function (test) {
+        var target = {
+            cow: function () {
+                return "says cluck";
+            }
+        };
+
+        twill.aspect(target, function (weave) {
+            weave.around.cow(function () {
+                return "says moo";
+            });
+        });
+
+        test.equals("says moo", target.cow());
+        test.done();
     }
 
 };

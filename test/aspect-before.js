@@ -1,17 +1,17 @@
 var twill = require("../lib/twill");
 
-exports["when aspecting after a method"] = {
-    "it calls the aspect after the actual" : function (test) {
+exports["when aspecting before a method"] = {
+    "it calls the aspect before the actual" : function (test) {
         var msg = "",
             target = {
                 f: function () {
-                    msg += "hello";
+                    msg += " world";
                 }
             };
 
         twill.aspect(target, function (weave) {
-            weave.after.f(function () {
-                msg += " world";
+            weave.before.f(function () {
+                msg += "hello";
             });
         });
 
@@ -57,5 +57,22 @@ exports["when aspecting after a method"] = {
         });
 
         target.merp();
+    },
+
+    "it still returns the return value from the original method" : function (test) {
+        var target = {
+            kungfu : function () {
+                return "i know it!";
+            }
+        };
+
+        twill.aspect(target, function (weave) {
+            weave.before.kungfu(function () {
+                return "the matrix has you";
+            });
+        });
+
+        test.equal("i know it!", target.kungfu());
+        test.done();
     }
 };

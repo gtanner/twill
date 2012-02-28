@@ -5,7 +5,7 @@ exports["the twill module"] = {
         test.done();
     },
 
-    "exposes an weave method": function (test) {
+    "exposes an aspect method": function (test) {
         var twill = require("../lib/twill");
         test.equal(typeof twill.aspect, "function");
         test.done();

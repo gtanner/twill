@@ -66,6 +66,24 @@ exports["when aspecting around a method"] = {
 
         test.equals("says moo", target.cow());
         test.done();
+    },
+
+    "it can unweave the methods added around" : function (test) {
+        var target = {
+                three: function () {
+                    return 3;
+                }
+            };
+
+        //should be a noop ;)
+        twill.unweave(twill.aspect(target, function (weave) {
+            weave.around.three(function () {
+                return 4;
+            });
+        }));
+
+        test.equal(target.three(), 3);
+        test.done();
     }
 
 };

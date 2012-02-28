@@ -14,7 +14,6 @@ exports["when aspecting in a new method"] = {
     },
 
     "it throws an exception if the method already exists" : function (test) {
-
         var target = {
             woohoo: function () {}
         };
@@ -27,7 +26,21 @@ exports["when aspecting in a new method"] = {
         } catch (e) {
             test.done();
         }
+    },
 
+    "it can unweave the new method" : function (test) {
+        var target = {},
+            aspect = twill.aspect(target, function (weave) {
+                weave.create.foo = function () {};
+                weave.create.bar = function () {};
+                weave.create.baz = function () {};
+            });
+
+        twill.unweave(aspect);
+
+        test.equal(undefined, target.foo);
+        test.equal(undefined, target.bar);
+        test.equal(undefined, target.baz);
+        test.done();
     }
-
 };

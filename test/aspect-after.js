@@ -74,6 +74,23 @@ exports["when aspecting after a method"] = {
 
         test.equal("OMG OMG OMG OMG OMG", target.doubleRainbow());
         test.done();
+    },
 
+    "it can unweave the methods added after" : function (test) {
+        var untouched = true,
+            target = {
+                soap: function () {
+                }
+            };
+
+        twill.unweave(twill.aspect(target, function (weave) {
+            weave.after.soap(function () {
+                untouched = false;
+            });
+        }));
+
+        target.soap();
+        test.ok(untouched);
+        test.done();
     }
 };

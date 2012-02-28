@@ -74,5 +74,25 @@ exports["when aspecting before a method"] = {
 
         test.equal("i know it!", target.kungfu());
         test.done();
+    },
+
+    "it can unweave the methods added before" : function (test) {
+        var untouched = true,
+            target = {
+                bob: function () {
+                }
+            };
+
+        //should be a noop ;)
+        twill.unweave(twill.aspect(target, function (weave) {
+            weave.before.bob(function () {
+                untouched = false;
+            });
+        }));
+
+        target.bob();
+
+        test.ok(untouched);
+        test.done();
     }
 };

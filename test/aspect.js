@@ -81,6 +81,12 @@ exports["when calling the aspect function"] = {
             test.ok(typeof weave.all.around === 'function', "around should be a function");
             test.done();
         });
+    },
+
+    "weave returns a pointer to the aspect" : function (test) {
+        var x = twill.aspect({}, function (weave) {});
+        test.ok(x !== undefined);
+        test.done();
     }
 };
 

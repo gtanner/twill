@@ -95,8 +95,6 @@ will run fine in both node and in the browser.
 
 This is a very early release and not everything is done just yet. 
 Still todo:
-- advice.all methods are not implemented
-- unweaving is not supported yet.
 - make it work in the browser
 
 # how to develop

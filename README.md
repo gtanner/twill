@@ -20,6 +20,9 @@ will run fine in both node and in the browser.
             foo: function (bar, baz) {
                 console.log(bar);
                 console.log(baz);
+            },
+            baz: function () {
+                throw "oh noes!";
             }
         };
 
@@ -34,6 +37,13 @@ will run fine in both node and in the browser.
 
         weave.around.foo(function (args, orig) {
             orig(args[0] || "default_bar", args[1] || "default_baz");
+        });
+
+
+        weave.exception.baz(function (e) {
+            console.log(e);
+            //just rethrow if you don't want to swallow the exception
+            throw e;
         });
 
         weave.create.sweet = function () {

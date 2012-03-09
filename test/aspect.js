@@ -72,13 +72,20 @@ exports["when calling the aspect function"] = {
         });
     }, 
 
-    "weave has an all object with the same methods as the weave object" : function (test) {
+    "weave has an exception object" : function (test) {
+        twill.aspect({}, function (weave) {
+            test.ok(typeof weave.exception === 'object', "exception should be a object");
+            test.done();
+        });
+    },
 
+    "weave has an all object with the same methods as the weave object" : function (test) {
         twill.aspect({}, function (weave) {
             test.ok(weave.all, "expected weave to expose the all object");
             test.ok(typeof weave.all.before === 'function', "before should be a function");
             test.ok(typeof weave.all.after === 'function', "after should be a function");
             test.ok(typeof weave.all.around === 'function', "around should be a function");
+            test.ok(typeof weave.all.exception === 'function', "exception should be a function");
             test.done();
         });
     },
@@ -118,6 +125,14 @@ exports["methods are exposed on"] = {
             test.ok(typeof weave.around.a === "function", "expected a to exist");
             test.ok(typeof weave.around.b === "function", "expected b to exist");
             test.ok(weave.around.c === undefined, "expected c to not exist");
+            test.done();
+        });
+    },
+    "the exception object" : function (test) {
+        twill.aspect(target, function (weave) {
+            test.ok(typeof weave.exception.a === "function", "expected a to exist");
+            test.ok(typeof weave.exception.b === "function", "expected b to exist");
+            test.ok(weave.exception.c === undefined, "expected c to not exist");
             test.done();
         });
     }

@@ -23,6 +23,8 @@ will run fine in both node and in the browser.
             },
             baz: function () {
                 throw "oh noes!";
+            },
+            ninja: function () {
             }
         };
 
@@ -46,7 +48,7 @@ will run fine in both node and in the browser.
             throw e;
         });
 
-        weave.create.sweet = function () {
+        weave.add.sweet = function () {
             console.log("dude");
         };
 
@@ -56,9 +58,11 @@ will run fine in both node and in the browser.
             console.log("stats +1 for " + method);
         });
 
-        weave.create.dude = function () {
+        weave.add.dude = function () {
             console.log("sweet");
         };
+
+        weave.remove.ninja();
     });
 
     foo.stuff("one", "two", "three");

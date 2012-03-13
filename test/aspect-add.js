@@ -5,7 +5,7 @@ exports["when aspecting in a new method"] = {
         var target = {};
 
         twill.aspect(target, function (weave) {
-            weave.create.asdf = function () {
+            weave.add.asdf = function () {
                 test.done();
             };
         });
@@ -20,7 +20,7 @@ exports["when aspecting in a new method"] = {
 
         try {
             twill.aspect(target, function (weave) {
-                weave.create.woohoo = function () {
+                weave.add.woohoo = function () {
                 };
             });
         } catch (e) {
@@ -31,9 +31,9 @@ exports["when aspecting in a new method"] = {
     "it can unweave the new method" : function (test) {
         var target = {},
             aspect = twill.aspect(target, function (weave) {
-                weave.create.foo = function () {};
-                weave.create.bar = function () {};
-                weave.create.baz = function () {};
+                weave.add.foo = function () {};
+                weave.add.bar = function () {};
+                weave.add.baz = function () {};
             });
 
         twill.unweave(aspect);

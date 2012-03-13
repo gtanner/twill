@@ -65,9 +65,16 @@ exports["when calling the aspect function"] = {
         });
     },
 
-    "weave has a create object" : function (test) {
+    "weave has an add object" : function (test) {
         twill.aspect({}, function (weave) {
-            test.ok(typeof weave.create === 'object', "create should be a object");
+            test.ok(typeof weave.add === 'object', "add should be a object");
+            test.done();
+        });
+    }, 
+
+    "weave has a remove object" : function (test) {
+        twill.aspect({}, function (weave) {
+            test.ok(typeof weave.remove === 'object', "add should be a object");
             test.done();
         });
     }, 

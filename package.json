@@ -1,6 +1,6 @@
 {
   "name": "twill",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "a clean javascript aspect oriented microframework",
   "homepage": "http://github.com/gtanner/twill",
   "author": "gtanner",

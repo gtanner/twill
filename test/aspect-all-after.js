@@ -40,11 +40,11 @@ exports["when aspecting after all methods"] = {
 
         twill.aspect(target, function (weave) {
             weave.all.after(function (method, args) {
-                test.equal(2, args.length);
+                test.equal(3, args.length);
                 test.done();
             });
         });
 
-        target.puppies("omg", "cute");
+        target.puppies("omg", "cute", "puppies");
     }
 };

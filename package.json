@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "a clean javascript aspect oriented microframework",
   "homepage": "http://github.com/gtanner/twill",
+  "repository": "https://github.com/gtanner/twill.git",
   "author": "gtanner",
   "contributors": [{
     "name": "Gord Tanner",
